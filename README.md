@@ -8,6 +8,8 @@ Para correr el proyecto
 node servergraphql.js
 ```
 
+El archivo graphql ![queries&mutations](querys&mutations.txt) tiene ejemplos de como realizar las query y las mutations.
+
 ## Sistema de gestión de premios por fidelidad
 
 - Los usuarios tienen que tener un nombre, apellido y puntos.
