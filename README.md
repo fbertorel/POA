@@ -8,7 +8,7 @@ Para correr el proyecto
 node servergraphql.js
 ```
 
-El archivo graphql [querys&mutations](querys&mutations.txt) tiene ejemplos de como realizar las query y las mutations.
+El archivo [graphql querys&mutations.txt](https://github.com/fbertorel/POA/blob/main/graphql%20querys%26mutations.txt) tiene ejemplos de como realizar las query y las mutations.
 
 ## Sistema de gestión de premios por fidelidad
 
