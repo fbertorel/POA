@@ -8,7 +8,7 @@ Para correr el proyecto
 node servergraphql.js
 ```
 
-El archivo [graphql querys&mutations.txt](https://github.com/fbertorel/POA/blob/main/graphql%20querys%26mutations.txt) tiene ejemplos de como realizar las query y las mutations.
+El archivo [graphql querys&mutations](https://github.com/fbertorel/POA/blob/main/graphql%20querys%26mutations.txt) tiene ejemplos de como realizar las query y las mutations.
 
 En [/db config](https://github.com/fbertorel/POA/tree/main/db%20config) se tiene un backup de la base de datos. Esta se puede cargar a traves de pgAdmin 4 (Postgres)
 
