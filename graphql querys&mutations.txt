@@ -1,0 +1,79 @@
+####### MUTATION ####### 
+
+# REALIZANDO LA CREACION DE UN PRODUCTO
+#mutation{
+#  createProduct(name: "Taza", description: "Marmol", points: 13, brand: "Cera")
+#}
+
+
+# REALIZANDO LA ELIMINACION DE UN PRODUCTO
+#mutation{
+#  deleteProduct(productId: 6)
+#}
+
+
+# REALIZANDO UPDATE DE PRODUCTO 
+#mutation{
+#  updateProduct(productId: 5,name: "Celular", description:"LTE/5G", points: 200, brand:"Nokia")
+#}
+
+
+# REALIZANDO LA CREACION DE UN USUARIO
+#mutation{
+#  createUser(firstname: "Conan", lastname: "Clarckson", email: "conanclackrson@gmail.com", points: 300)
+#}
+
+
+# REALIZANDO UN INTERCAMBIO ENTRE USUARIO ID Y PRODUCTO ID
+#mutation{
+#  exchange(usuario: 1, producto: 1)
+#}
+
+
+####### QUERY ####### 
+
+# REALIZANDO UNA QUERY PARA UN USUARIO ID
+#query{
+#  user(token: 1){
+#    firstname, lastname
+#  }
+#}
+
+
+# REALIZANDO UNA QUERY PARA UN PRODUCTO ID
+#query{
+#  product(token: 1){
+#    name
+#  }
+#}
+
+
+# REALIZANDO UNA QUERY ENTRE TODOS LOS USUARIOS
+#query{
+#  getAllUsers{
+#    firstname, lastname, email, points, 
+#  }
+#}
+
+
+
+# REALIZANDO UNA QUERY QUE DEVUELVE TODAS LAS FILAS DE LA COLUMNA "name" DE LA TABLA PRODUCT
+#query{
+#  getAllProducts(table: "producto"){
+#    name
+#  }
+#}
+
+
+# REALIZANDO UNA QUERY QUE DEVUELVE TODAS LAS FILAS DE LA COLUMNA "firstname" DE LA TABLA USUARIO
+#query{
+#  getAllUsers(table: "usuario"){
+#    firstname
+#  }
+#}
+
+
+# REALIZANDO UNA QUERY QUE DEVUELVE LOS PUNTOS DE UN USUARIO
+#query{
+#  getPointsById(userId: 1)
+#}
