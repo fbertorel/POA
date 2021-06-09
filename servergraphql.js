@@ -20,12 +20,18 @@ var schema = buildSchema(`
         totalPoints: Int
         brand: String
     }
+    type Exchange{
+        id_exchange: ID!
+        id_usuario_fk: Int!
+        id_producto_fk: Int!
+    }
     type Query {
         getAllUsers(table: String!): [User]
         getAllProducts(table: String!): [Product]
         user(token: Int!): User
         product(token: Int!): Product
         getPointsById(userId: Int!): String
+        exchangeStory(userId: Int!): [Exchange]
     }
     type Mutation{
         exchange(usuario: ID!, producto: ID!): String
@@ -46,7 +52,8 @@ var root = {
     createProduct: (args) => index.createProduct(args.name, args.description, args.points, args.brand),
     updateProduct: (args) => index.setProduct(args.productId, args.name, args.description, args.points, args.brand),
     deleteProduct: (args) => index.deleteProduct(args.productId),
-    getPointsById: (args) => index.selectPointsUser(args.userId)
+    getPointsById: (args) => index.selectPointsUser(args.userId),
+    exchangeStory: (args) => index.exchangeHistory(args.userId)
     
 
 };

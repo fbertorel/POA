@@ -140,6 +140,17 @@ async function deleteProducto(productId) {
   }
 }
 
+async function selectProductByUser(userId) {
+    try {
+        const res = await client.query(
+            `SELECT id_producto_fk FROM exchange WHERE id_usuario_fk = ${userId}`
+        );
+        return res.rows; 
+  } catch (err) {
+    return err.stack;
+  }
+}
+//selectProductByUser(1).then(console.log);
 
 /* TEST REALIZADOS PARA PROBAR FUNCIONES INDIVIDUALES
 //setProducto(6, "SmartTV", "55 pulgadas", 130, "LG").then(console.log)
@@ -157,5 +168,5 @@ async function deleteProducto(productId) {
 //select1.then(console.log);
 */
 
-module.exports = { selectAllFrom, selectFrom, selectPoints, exchange, verificarPuntos, createUser, createProduct, setProducto, deleteProducto };
+module.exports = { selectAllFrom, selectFrom, selectPoints, exchange, verificarPuntos, createUser, createProduct, setProducto, deleteProducto, selectProductByUser };
 

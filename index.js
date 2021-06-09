@@ -53,6 +53,13 @@ async function deleteProduct(productId){
     return resp;
 }
 
+async function exchangeHistory(userId){
+    const resp = await database.selectProductByUser(userId)
+    return resp;
+}
+
+//exchangeHistory(1).then(console.log)
+
 
 /* TEST REALIZADOS PARA PROBAR FUNCIONES INDIVIDUALES
 //createUser("Alberto","Felisoni","alb@yahoo.com.ar", 36).then(console.log)
@@ -67,7 +74,7 @@ async function deleteProduct(productId){
 // points.then(console.log)
 */
 
-module.exports = { createUser, selectAll, selectById, selectPointsUser, exchangeProduct, createProduct, setProduct, deleteProduct};
+module.exports = { createUser, selectAll, selectById, selectPointsUser, exchangeProduct, createProduct, setProduct, deleteProduct, exchangeHistory };
 
 
 
