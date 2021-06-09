@@ -56,7 +56,6 @@
 #}
 
 
-
 # REALIZANDO UNA QUERY QUE DEVUELVE TODAS LAS FILAS DE LA COLUMNA "name" DE LA TABLA PRODUCT
 #query{
 #  getAllProducts(table: "producto"){
@@ -76,4 +75,12 @@
 # REALIZANDO UNA QUERY QUE DEVUELVE LOS PUNTOS DE UN USUARIO
 #query{
 #  getPointsById(userId: 1)
+#}
+
+
+# REALIZANDO UNA QUERY QUE DEVUELVE LOS PRODUCTOS QUE CANJEO UN USUARIO
+#query{
+#  exchangeStory(userId: 1){
+#    id_producto_fk
+#  }
 #}
