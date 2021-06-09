@@ -52,7 +52,7 @@ async function exchange(user, product) {
             `INSERT INTO exchange ( id_usuario_fk, id_producto_fk) VALUES (${user},${product})`
       );      
     } catch (err) {
-      return err.stack;
+        return err.stack;
     }
   }
 
@@ -84,7 +84,7 @@ async function verificarPuntos(userId, prodId) {
             return `El usuario ${userId} no tiene puntos suficientes para canjear el producto ${prodId}. Tiene ${puntosuser} puntos y necesita ${puntosprod} puntos.`
         }
     } catch (err) {
-      return err.stack;
+        return err.stack;
     }
   }
 async function createUser(firstname, lastname, email, points) {
@@ -143,7 +143,7 @@ async function deleteProducto(productId) {
 async function selectProductByUser(userId) {
     try {
         const res = await client.query(
-            `SELECT id_producto_fk FROM exchange WHERE id_usuario_fk = ${userId}`
+            `SELECT * FROM exchange WHERE id_usuario_fk = ${userId}`
         );
         return res.rows; 
   } catch (err) {

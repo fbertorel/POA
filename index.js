@@ -1,16 +1,6 @@
 const database = require("./db");
 
 
-// Test async
-// async function hello() { return "Hello" };
-// hello().then(console.log)
-
-
-//id = 2;
-// select = database.selectFrom("producto",`where id = ${id}`);
-
-//select = database.selectFrom("intercambio", `where id = ${id}`);
-
 
 function selectAll(table){
     selectAll = database.selectAllFrom(table);
@@ -58,10 +48,10 @@ async function exchangeHistory(userId){
     return resp;
 }
 
-//exchangeHistory(1).then(console.log)
 
 
 /* TEST REALIZADOS PARA PROBAR FUNCIONES INDIVIDUALES
+//exchangeHistory(1).then(console.log)
 //createUser("Alberto","Felisoni","alb@yahoo.com.ar", 36).then(console.log)
 //setProduct("SmartTV", "55 pulgadas", 130, "LG", 6).then(console.log)
 //createProduct("TV", "22 pulg", 80, "Banghio").then(console.log);

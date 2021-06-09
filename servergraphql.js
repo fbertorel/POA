@@ -17,7 +17,7 @@ var schema = buildSchema(`
         id: ID!
         name: String!
         description: String
-        totalPoints: Int
+        points: Int
         brand: String
     }
     type Exchange{
@@ -26,8 +26,8 @@ var schema = buildSchema(`
         id_producto_fk: Int!
     }
     type Query {
-        getAllUsers(table: String!): [User]
-        getAllProducts(table: String!): [Product]
+        getAllUsers: [User]
+        getAllProducts: [Product]
         user(token: Int!): User
         product(token: Int!): Product
         getPointsById(userId: Int!): String
@@ -43,8 +43,9 @@ var schema = buildSchema(`
 `);
 
 var root = { 
-    getAllUsers: (args) => index.selectAll(args.table),
-    getAllProducts: (args) => index.selectAll(args.table),
+    
+    getAllUsers: () => index.selectAll("usuario"),
+    getAllProducts: () => index.selectAll("producto"),
     user: (args) => index.selectById("usuario",args.token),         //devuelve usuario por ID
     product: (args) => index.selectById("producto", args.token),     //devuelve producto por ID
     exchange: (args) => index.exchangeProduct(args.usuario, args.producto),  
@@ -55,7 +56,6 @@ var root = {
     getPointsById: (args) => index.selectPointsUser(args.userId),
     exchangeStory: (args) => index.exchangeHistory(args.userId)
     
-
 };
  
 var app = express();
