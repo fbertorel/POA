@@ -8,12 +8,12 @@ function selectAll(table){
 }
 
 function selectById(table, condition){
-    select1 = database.selectFrom(table, condition);
-    return select1;
+    resp = database.selectFrom(table, condition);
+    return resp;
 }
 
 function selectPointsUser(userId){
-    pointsByUser = database.selectPoints("usuario", `${userId}`);
+    pointsByUser = database.selectPoints("usuario", userId);
     return pointsByUser;
 }
 

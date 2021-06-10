@@ -18,8 +18,11 @@ async function selectAllFrom(table) {
         const res = await client.query(
         `SELECT * FROM ${table}`
     );   
-      return res.rows;      //res.rows[0]["firstname"]; devuelve Franco y res.rows[0]; devuelve {firstname: 'Franco'}      
+
+    return res.rows;      //res.rows[0]["firstname"]; devuelve Franco y res.rows[0]; devuelve {firstname: 'Franco'}      
+      
     } catch (err) {
+        
       return err.stack;
     }
   }
@@ -31,6 +34,7 @@ async function selectFrom(table, condition) {
       );
       return res.rows[0];      
     } catch (err) {
+
       return err.stack;
     }
   }
@@ -42,7 +46,8 @@ async function selectPoints(table, condition) {
         );
     return res.rows[0]["points"];      
     } catch (err) {
-      return err.stack;
+        return "El usuario no existe"
+        return err.stack;
     }
   }
 
@@ -52,7 +57,8 @@ async function exchange(user, product) {
             `INSERT INTO exchange ( id_usuario_fk, id_producto_fk) VALUES (${user},${product})`
       );      
     } catch (err) {
-        return err.stack;
+        console.log("No se pudo cargar en la tabla")
+        //return err.stack;
     }
   }
 
@@ -62,7 +68,7 @@ async function setPoints(user, points) {
             `UPDATE usuario SET points = ${points} WHERE id = ${user}`
         );
   } catch (err) {
-    return err.stack;
+        return err.stack;
   }
 }
 
@@ -73,9 +79,9 @@ async function verificarPuntos(userId, prodId) {
         const puntosprod = await selectPoints("producto", `${prodId}`);
         //console.log("puntos producto",puntosprod)
         if (puntosuser >= puntosprod){
+            const res = await exchange(userId, prodId);
             const puntosNuevosUser = (puntosuser - puntosprod);
             //console.log("PUEDO COMPRAR PORQUE TENGO PUNTOS")
-            const res = await exchange(userId, prodId);
             const upd = await setPoints(userId, puntosNuevosUser);
             texto = `El usuario ${userId} canjeo el producto ${prodId}. Todavia tiene ${puntosNuevosUser} puntos.`;
             return texto;            
@@ -84,15 +90,12 @@ async function verificarPuntos(userId, prodId) {
             return `El usuario ${userId} no tiene puntos suficientes para canjear el producto ${prodId}. Tiene ${puntosuser} puntos y necesita ${puntosprod} puntos.`
         }
     } catch (err) {
-        return err.stack;
+        return "El producto o usuario indicado no existe"
+        //return err.stack;
     }
   }
 async function createUser(firstname, lastname, email, points) {
     try {
-        //console.log("nombre: ", firstname)
-        //console.log("apellido: ", lastname)
-        //console.log("mail: ", email)
-        //console.log("puntos: ",points)
         texto = `Se agrego el usuario con exito`;
         //console.log(`INSERT INTO usuario (firstname, lastname, email, points) VALUES ('${firstname}','${lastname}','${email}',${points})`);
         const res = await client.query(
@@ -100,7 +103,7 @@ async function createUser(firstname, lastname, email, points) {
       );
         return texto;
     } catch (err) {
-      return err.stack;
+        return "No se pudo crear el usuario"
     }
   }
 
@@ -124,8 +127,8 @@ async function setProducto(productId, name, description, points, brand) {
         texto = `Se actualizo producto ${productId}`
         return texto;
   } catch (err) {
-    return err.stack;
-  }
+        return "No se pudo actualizar el producto"
+}
 }
 
 async function deleteProducto(productId) {
@@ -133,10 +136,10 @@ async function deleteProducto(productId) {
         const res = await client.query(
             `DELETE FROM producto WHERE id = ${productId}`
         );
-        texto = `Se elimino producto producto ${productId}`
+        texto = `Se elimino producto ${productId}`
         return texto;
   } catch (err) {
-    return err.stack;
+    
   }
 }
 
